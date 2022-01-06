@@ -2,7 +2,7 @@ package com.bl.hashtableusinglinkedlist;
 
 public class MyLinkedList<K> {
 	public INode<K> head;
-	public INode tail;
+	public INode<K> tail;
 
 	public MyLinkedList() {
 		this.head = null;
@@ -18,6 +18,19 @@ public class MyLinkedList<K> {
 			node = node.getNext();
 		}
 		return null;
+	}
+
+	public INode delete(K key) {
+		INode<K> node = head;
+		INode<K> previous = null;
+		while (node != null && node.getNext() != null) {
+			previous = node;
+			if (node.getKey().equals(key)) {
+				previous.setNext(node.getNext());
+			}
+			node = node.getNext();
+		}
+		return node;
 	}
 
 	public void append(INode<K> myNode) {
